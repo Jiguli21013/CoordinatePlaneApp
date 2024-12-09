@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_standard">8dp</dimen>
+    <dimen name="padding_large">8dp</dimen>
+
+    <dimen name="margin_standard">15dp</dimen>
+    <dimen name="margin_large">25dp</dimen>
+
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_extra_size_large">25sp</dimen>
+
+    <dimen name="recycler_height">60dp</dimen>
+
+    <dimen name="button_padding_horizontal">40dp</dimen>
+
+
+</resources>

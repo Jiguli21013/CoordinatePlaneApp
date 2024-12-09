@@ -5,6 +5,7 @@
     <string name="text_view_inserts_points">Введите\nколичество\nточек</string>
     <string name="edit_text_hint_points_">Желаемое количество точек</string>
     <string name="button_go_text">Поехали!</string>
+    <string name="edit_text_autofill_hint">Enter points</string>
 
     <!-- GraphFragment -->
     <string name="button_save_to_file">Сохранить в файл</string>

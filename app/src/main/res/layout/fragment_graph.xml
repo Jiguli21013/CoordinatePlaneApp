@@ -7,7 +7,7 @@
     android:id="@+id/TableViewFL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0f0"
+    android:background="@color/background_gray"
     tools:context=".presentation.graphscreen.GraphFragment">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:text="@string/table_with_coordinates_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:layout_height="60dp"
+            tools:layout_height="@dimen/recycler_height"
             tools:listitem="@layout/item_table_cell" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:text="@string/graph_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
         <com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.GraphView
@@ -46,15 +46,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#f0f0f0" />
+            android:background="@color/background_gray" />
 
         <Button
             android:id="@+id/saveFileBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginHorizontal="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_standard"
             android:text="@string/button_save_to_file" />
 
     </LinearLayout>

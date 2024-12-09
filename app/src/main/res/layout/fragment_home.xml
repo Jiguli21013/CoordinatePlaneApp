@@ -15,25 +15,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_extra_size_large"
         android:text="@string/text_view_inserts_points" />
 
     <EditText
         android:id="@+id/numberOfPointsET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/margin_standard"
         android:hint="@string/edit_text_hint_points_"
         android:inputType="number"
         android:maxLength="3"
         android:gravity="center"
-        android:autofillHints="some hint"/>
+        android:autofillHints="@string/edit_text_autofill_hint"/>
 
     <Button
         android:id="@+id/goBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="40dp"
+        android:paddingHorizontal="@dimen/button_padding_horizontal"
         android:enabled="false"
         android:text="@string/button_go_text" />
 

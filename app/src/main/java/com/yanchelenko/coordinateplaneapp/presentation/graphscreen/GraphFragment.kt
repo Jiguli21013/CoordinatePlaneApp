@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -30,6 +31,8 @@ class GraphFragment: Fragment() {
     private var _binding: FragmentGraphBinding? = null
     private val binding get() = _binding!!
 
+    private var requestPermissionLauncher: ActivityResultLauncher<String>? = null
+
     private val viewModel: GraphViewModel by viewModels()
     private var numberOfPoints: Int? = null
 
@@ -37,6 +40,7 @@ class GraphFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let { numberOfPoints = it.getInt(NUMBER_OF_POINTS) }
+        initSaveButton()
     }
 
     override fun onCreateView(
@@ -55,7 +59,7 @@ class GraphFragment: Fragment() {
 
         binding.apply {
             errorView.repeatBtn.setOnClickListener { viewModel.getPointsRequest() }
-            saveFileBtn.setOnClickListener { initSaveButton() }
+            saveFileBtn.setOnClickListener { requestPermissionLauncher?.launch(WRITE_PERMISSION) }
         }
     }
 
@@ -66,7 +70,7 @@ class GraphFragment: Fragment() {
     }
 
     private fun initSaveButton() {
-        val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
                 saveFileToScopeStorage(
                     view = binding.customViewGraph,
@@ -80,12 +84,6 @@ class GraphFragment: Fragment() {
                     REQUEST_CODE,
                     view = binding.customViewGraph
                 )
-            }
-        }
-
-        binding.apply {
-            saveFileBtn.setOnClickListener {
-                requestPermissionLauncher.launch(WRITE_PERMISSION)
             }
         }
     }
