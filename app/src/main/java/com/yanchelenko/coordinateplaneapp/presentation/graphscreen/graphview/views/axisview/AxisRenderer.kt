@@ -8,9 +8,9 @@ import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.vie
 import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.views.axisview.drawers.GridDrawer
 import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.views.axisview.drawers.LabelDrawer
 import com.yanchelenko.coordinateplaneapp.presentation.modelsUI.PointUI
-import com.yanchelenko.tableandgraphapp.ui.table.diagramview.views.axisview.interfaces.IAxisDrawer
-import com.yanchelenko.tableandgraphapp.ui.table.diagramview.views.axisview.interfaces.IGridDrawer
-import com.yanchelenko.tableandgraphapp.ui.table.diagramview.views.axisview.interfaces.ILabelDrawer
+import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.views.axisview.interfaces.IAxisDrawer
+import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.views.axisview.interfaces.IGridDrawer
+import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.views.axisview.interfaces.ILabelDrawer
 
 class AxisRenderer : Renderer {
 
@@ -33,24 +33,24 @@ class AxisRenderer : Renderer {
         val centerX =  canvas.width / 2f + graphState.offsetX
         val centerY =  canvas.height / 2f + graphState.offsetY
 
-        // Рисуем ось X
+        // Ось X
         val startX = centerX - graphState.graphWidth * cellSize
         val endX = centerX + graphState.graphWidth * cellSize
         axisDrawer.drawAxis(canvas, startX, centerY, endX, centerY, axisPaint)
 
-        // Рисуем ось Y
+        // Ось Y
         val startY = centerY - graphState.graphHeight * cellSize
         val endY = centerY + graphState.graphHeight * cellSize
         axisDrawer.drawAxis(canvas, centerX, startY, centerX, endY, axisPaint)
 
-        // Рисуем метки и значения на оси X
+        // Метки и значения на оси X
         for (i in -graphState.graphWidth.toInt()..graphState.graphWidth.toInt() step 10) {
             val x = centerX + (i * cellSize)
             val y = centerY + EXTRA_SPACE
             labelDrawer.drawLabel(canvas, x, y, i.toString(), textPaint)
         }
 
-        // Рисуем метки и значения на оси Y
+        // Метки и значения на оси Y
         for (i in -graphState.graphHeight.toInt()..graphState.graphHeight.toInt() step 10) {
             val x = centerX + EXTRA_SPACE
             val y = centerY - (i * cellSize)

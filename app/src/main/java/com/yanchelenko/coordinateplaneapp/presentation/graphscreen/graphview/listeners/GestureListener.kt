@@ -9,7 +9,7 @@ class GestureListener(
 ) : GestureDetector.SimpleOnGestureListener() {
 
     override fun onDoubleTap(e: MotionEvent): Boolean {
-        stateController.resetGraph() // Сбрасываем график на исходное состояние
+        stateController.resetGraph()
         return true
     }
 
@@ -22,7 +22,7 @@ class GestureListener(
         stateController.offsetX -= distanceX * sensitivity
         stateController.offsetY -= distanceY * sensitivity
 
-        // Применяем ограничения на смещения
+        // Ограничения на смещения
         stateController.constrainOffsets()
 
         return true

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanchelenko.coordinateplaneapp.domain.usecases.GetPointsUseCase
 import com.yanchelenko.coordinateplaneapp.presentation.UIState
+import com.yanchelenko.coordinateplaneapp.presentation.modelsUI.toGraphModelUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +31,9 @@ class GraphViewModel @Inject constructor(
             _graphState.emit(UIState.Loading)
             getPointsUseCase.execute(
                 numberOfPoints = savedStateHandle[GraphFragment.NUMBER_OF_POINTS] ?: return@launch
-            ).onSuccess { graphModel ->
+            ).map { listOfPointEntities ->
+                listOfPointEntities.toGraphModelUI()
+            }.onSuccess { graphModel ->
                 _graphState.emit(UIState.Success(graphModel))
             }.onFailure { throwable ->
                 _graphState.emit(UIState.Error(messageError = throwable.cause?.message + throwable.message))

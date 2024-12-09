@@ -2,7 +2,7 @@ package com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.vi
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import com.yanchelenko.tableandgraphapp.ui.table.diagramview.views.axisview.interfaces.ILabelDrawer
+import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.graphview.views.axisview.interfaces.ILabelDrawer
 
 class LabelDrawer : ILabelDrawer {
     override fun drawLabel(canvas: Canvas, x: Float, y: Float, text: String, paint: Paint) {

@@ -14,11 +14,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yanchelenko.coordinateplaneapp.databinding.FragmentGraphBinding
-import com.yanchelenko.coordinateplaneapp.presentation.PermissionHelper
-import com.yanchelenko.coordinateplaneapp.presentation.PermissionHelper.READ_PERMISSION
-import com.yanchelenko.coordinateplaneapp.presentation.PermissionHelper.REQUEST_CODE
-import com.yanchelenko.coordinateplaneapp.presentation.PermissionHelper.WRITE_PERMISSION
-import com.yanchelenko.coordinateplaneapp.presentation.PermissionHelper.saveFileToScopeStorage
+import com.yanchelenko.coordinateplaneapp.presentation.utils.PermissionHelper
+import com.yanchelenko.coordinateplaneapp.presentation.utils.PermissionHelper.READ_PERMISSION
+import com.yanchelenko.coordinateplaneapp.presentation.utils.PermissionHelper.REQUEST_CODE
+import com.yanchelenko.coordinateplaneapp.presentation.utils.PermissionHelper.WRITE_PERMISSION
+import com.yanchelenko.coordinateplaneapp.presentation.utils.PermissionHelper.saveFileToScopeStorage
 import com.yanchelenko.coordinateplaneapp.presentation.UIState
 import com.yanchelenko.coordinateplaneapp.presentation.graphscreen.adapter.PointsTableAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +53,19 @@ class GraphFragment: Fragment() {
         observeGraphState()
         initViews()
 
+        binding.apply {
+            errorView.repeatBtn.setOnClickListener { viewModel.getPointsRequest() }
+            saveFileBtn.setOnClickListener { initSaveButton() }
+        }
+    }
+
+    private fun initViews() {
+        val gridLayoutManager =
+            GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false)
+        binding.pointsTableRV.layoutManager = gridLayoutManager
+    }
+
+    private fun initSaveButton() {
         val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
                 saveFileToScopeStorage(
@@ -71,17 +84,10 @@ class GraphFragment: Fragment() {
         }
 
         binding.apply {
-            errorView.repeatBtn.setOnClickListener { viewModel.getPointsRequest() }
             saveFileBtn.setOnClickListener {
                 requestPermissionLauncher.launch(WRITE_PERMISSION)
             }
         }
-    }
-
-    private fun initViews() {
-        val gridLayoutManager =
-            GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false)
-        binding.pointsTableRV.layoutManager = gridLayoutManager
     }
 
     private fun observeGraphState() {

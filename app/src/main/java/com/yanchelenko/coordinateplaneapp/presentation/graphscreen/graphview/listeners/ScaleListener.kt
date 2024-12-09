@@ -20,7 +20,6 @@ class ScaleListener(private val stateController: GraphStateController) : ScaleGe
         // Обновление смещения относительно точки фокуса
         stateController.updateScale(focusX, focusY, scaleDelta)
 
-        // Обновление представления
         stateController.invalidateView()
 
         return true

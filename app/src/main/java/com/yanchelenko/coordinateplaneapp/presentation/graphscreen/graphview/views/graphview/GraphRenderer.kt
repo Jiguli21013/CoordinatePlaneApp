@@ -53,7 +53,7 @@ class GraphRenderer : Renderer {
                 textPaint = textPaint
             )
 
-            // Соединяем точки
+            // Соединение точки
             if (index == 0) {
                 path.moveTo(x, y)
             } else {
@@ -61,7 +61,6 @@ class GraphRenderer : Renderer {
             }
         }
 
-        // Рисуем линии
         lineDrawer.drawLine(
             canvas = canvas,
             path = path,

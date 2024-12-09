@@ -1,4 +1,4 @@
-package com.yanchelenko.coordinateplaneapp.presentation
+package com.yanchelenko.coordinateplaneapp.presentation.utils
 
 import android.app.Activity
 import android.content.ContentValues
@@ -63,7 +63,6 @@ object PermissionHelper {
             val uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
             uri?.let {
                 resolver.openOutputStream(it)?.use { outputStream ->
-                    // Сохранение Bitmap в формате PNG
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
                     outputStream.flush()
                 }
