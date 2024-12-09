@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CoordinatePlaneApp</string>
+
+    <!-- HomeFragment -->
+    <string name="text_view_inserts_points">Введите\nколичество\nточек</string>
+    <string name="edit_text_hint_points_">Желаемое количество точек</string>
+    <string name="button_go_text">Поехали!</string>
+
+    <!-- GraphFragment -->
+    <string name="button_save_to_file">Сохранить в файл</string>
+    <string name="table_with_coordinates_title">Таблица с координатами:</string>
+    <string name="graph_title">График:</string>
+    <string name="button_repeat">Повторить</string>
+
+    <!-- TableAdapterItem -->
+    <string name="text_view_title_x">X</string>
+    <string name="text_view_title_y">Y</string>
+</resources>
